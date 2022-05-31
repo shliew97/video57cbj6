@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script
@@ -13,6 +14,10 @@
             init: function () {
                 var marker = this.el;
                 this.vid = document.querySelector("#vid");
+
+                $('#a_video').click(function () {
+                    window.location.href = "https://www.google.com";
+                });
 
                 marker.addEventListener('markerFound', function () {
                     this.toggle = true;
@@ -27,26 +32,23 @@
             },
         });
     </script>
-    <script>
-        $('#a_box').click(function () {
-            window.location.href = "https://www.google.com";
-        });
-    </script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
     <a-scene vr-mode-ui="enabled: false" loading-screen="enabled: false;"
         arjs='sourceType: webcam; debugUIEnabled: false;' id="scene" embedded gesture-detector>
-        <!-- <a-assets>
+        <a-assets>
             <video id="vid" src="assets/asset.mp4" preload="auto" response-type="arraybuffer" loop crossorigin
                 webkit-playsinline autoplay playsinline></video>
-        </a-assets> -->
+        </a-assets>
 
-        <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
-            raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
-            <!-- <a-video id="a_video" src="#vid" scale="1 1 1" position="0 0.1 0" rotation="-90 0 0" class="clickable" gesture-handler>
-            </a-video> -->
-            <a-box id="a_box" position="-90 0 0" color="#4CC3D9"></a-box>
+        <a-marker type="pattern" preset="custom" url="assets/marker.patt" videohandler smooth="true"
+            smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" raycaster="objects: .clickable"
+            emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
+            <a-video id="a_video" src="#vid" scale="1 1 1" position="0 0.1 0" rotation="-90 0 0" class="clickable"
+                gesture-handler>
+            </a-video>
+            <img id="kazetachinu" src="https://cdn.aframe.io/examples/ui/kazetachinu.jpg" crossorigin="anonymous" />
         </a-marker>
 
         <a-entity camera></a-entity>
