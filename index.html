@@ -15,8 +15,8 @@
                 var marker = this.el;
                 this.vid = document.querySelector("#vid");
 
-                $('#a_text').click(function () {
-                    window.location.href = "https://www.google.com";
+                $('#a_video').click(function () {
+                    window.location.href = 'https://www.google.com'
                 });
 
                 marker.addEventListener('markerFound', function () {
@@ -37,8 +37,8 @@
                 var marker = this.el;
                 this.vid = document.querySelector("#vid2");
 
-                $('#a_text2').click(function () {
-                    window.location.href = "https://www.facebook.com";
+                $('#a_video2').click(function () {
+                    window.location.href = 'https://www.facebook.com'
                 });
 
                 marker.addEventListener('markerFound', function () {
@@ -57,6 +57,7 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
+    <p hidden id="url"></p>
     <a-scene vr-mode-ui="enabled: false" loading-screen="enabled: false;"
         arjs='sourceType: webcam; debugUIEnabled: false;' id="scene" embedded gesture-detector>
         <a-assets>
@@ -72,21 +73,15 @@
         <a-marker type="pattern" preset="custom" url="assets/marker.patt" videohandler boxhandler smooth="true"
             smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" raycaster="objects: .clickable"
             emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
-            <a-video id="a_video" src="#vid" scale="1 1 1" position="0 0 0" rotation="-90 0 0"
-                gesture-handler>
+            <a-video id="a_video" src="#vid" scale="1 1 1" position="0 0 0" rotation="-90 0 0" class="clickable"gesture-handler>
             </a-video>
-            <a-text id="a_text" value="Click here!" position="-0.5 0 0.8" rotation="-90 0 0" class="clickable"></a-text>
-            <!-- <a-text value="Tap on the video!" position="-0.8 0 0.8" rotation="-90 0 0"></a-text> -->
         </a-marker>
 
         <a-marker type="pattern" preset="custom" url="assets/marker2.patt" videohandler2 boxhandler smooth="true"
             smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" raycaster="objects: .clickable"
             emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
-            <a-video id="a_video" src="#vid2" scale="1 1 1" position="0 0 0" rotation="-90 0 0"
-                gesture-handler>
+            <a-video id="a_video2" src="#vid2" scale="1 1 1" position="0 0 0" rotation="-90 0 0" class="clickable" gesture-handler>
             </a-video>
-            <a-text id="a_text2" value="Click here!" position="-0.5 0 0.8" rotation="-90 0 0" class="clickable"></a-text>
-            <!-- <a-box id="a_box2" color="tomato" rotation="0 0 0" height="0.1" width="1" class="clickable"></a-box> -->
         </a-marker>
 
         <a-entity camera></a-entity>
