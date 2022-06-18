@@ -14,46 +14,76 @@
     <script>
         AFRAME.registerComponent('videohandler', {
             init: function () {
-                var marker = this.el;
+                // var marker = this.el;
+                // this.vid = document.querySelector("#vid");
+
+                this.toggle = false;
                 this.vid = document.querySelector("#vid");
+                this.vid.pause();
 
                 $('#a_video').click(function () {
                     window.location.href = 'https://www.google.com'
                 });
 
-                marker.addEventListener('markerFound', function () {
-                    this.toggle = true;
-                    this.vid.play();
-                }.bind(this));
+                // marker.addEventListener('markerFound', function () {
+                //     this.toggle = true;
+                //     this.vid.play();
+                // }.bind(this));
 
-                marker.addEventListener('markerLost', function () {
-                    this.toggle = false;
-                    this.vid.pause();
-                }.bind(this));
+                // marker.addEventListener('markerLost', function () {
+                //     this.toggle = false;
+                //     this.vid.pause();
+                // }.bind(this));
 
             },
+            tick: function () {
+                if (this.el.object3D.visible == true) {
+                    if (!this.toggle) {
+                        this.toggle = true;
+                        this.vid.play();
+                    }
+                } else {
+                    this.toggle = false;
+                    this.vid.pause();
+                }
+            }
         });
 
         AFRAME.registerComponent('videohandler2', {
             init: function () {
-                var marker = this.el;
+                // var marker = this.el;
+                // this.vid = document.querySelector("#vid");
+
+                this.toggle = false;
                 this.vid = document.querySelector("#vid2");
+                this.vid.pause();
 
                 $('#a_video2').click(function () {
                     window.location.href = 'https://www.google.com'
                 });
 
-                marker.addEventListener('markerFound', function () {
-                    this.toggle = true;
-                    this.vid.play();
-                }.bind(this));
+                // marker.addEventListener('markerFound', function () {
+                //     this.toggle = true;
+                //     this.vid.play();
+                // }.bind(this));
 
-                marker.addEventListener('markerLost', function () {
-                    this.toggle = false;
-                    this.vid.pause();
-                }.bind(this));
+                // marker.addEventListener('markerLost', function () {
+                //     this.toggle = false;
+                //     this.vid.pause();
+                // }.bind(this));
 
             },
+            tick: function () {
+                if (this.el.object3D.visible == true) {
+                    if (!this.toggle) {
+                        this.toggle = true;
+                        this.vid.play();
+                    }
+                } else {
+                    this.toggle = false;
+                    this.vid.pause();
+                }
+            }
         });
     </script>
 </head>
@@ -75,14 +105,16 @@
         <a-marker type="pattern" preset="custom" url="assets/marker.patt" videohandler boxhandler smooth="true"
             smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" raycaster="objects: .clickable"
             emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
-            <a-video play-on-window-click id="a_video" src="#vid" scale="1 1 1" position="0 0 0" rotation="-90 0 0" class="clickable"gesture-handler>
+            <a-video play-on-window-click id="a_video" src="#vid" scale="1 1 1" position="0 0 0" rotation="-90 0 0"
+                class="clickable" gesture-handler>
             </a-video>
         </a-marker>
 
         <a-marker type="pattern" preset="custom" url="assets/marker2.patt" videohandler2 boxhandler smooth="true"
             smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" raycaster="objects: .clickable"
             emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
-            <a-video play-on-window-click id="a_video2" src="#vid2" scale="1 1 1" position="0 0 0" rotation="-90 0 0" class="clickable" gesture-handler>
+            <a-video play-on-window-click id="a_video2" src="#vid2" scale="1 1 1" position="0 0 0" rotation="-90 0 0"
+                class="clickable" gesture-handler>
             </a-video>
         </a-marker>
 
