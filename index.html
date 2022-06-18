@@ -20,18 +20,18 @@
                 //     window.location.href = 'https://www.google.com'
                 // });
 
-                // window.addEventListener('click', function () {
-                //     document.querySelector('#vid').play();
-                // });
+                window.addEventListener('click', function () {
+                    document.querySelector('#vid').play();
+                });
 
                 marker.addEventListener('markerFound', function () {
                     this.toggle = true;
-                    document.querySelector('#vid').play();
+                    this.vid.play();
                 }.bind(this));
 
                 marker.addEventListener('markerLost', function () {
                     this.toggle = false;
-                    document.querySelector('#vid').pause();
+                    this.vid.pause();
                 }.bind(this));
 
             },
