@@ -15,7 +15,7 @@
                 var marker = this.el;
                 this.vid = document.querySelector("#vid");
 
-                document.getElementById('vid').addEventListener('ended', function() {
+                document.getElementById('vid').addEventListener('ended', function(e) {
                     window.location.href = 'https://chat.whatsapp.com/D6slqeNlMluFNYIqeGzreJ'
                 },false);
 
@@ -44,7 +44,7 @@
     <a-scene vr-mode-ui="enabled: false" loading-screen="enabled: false;"
         arjs='sourceType: webcam; debugUIEnabled: false;' id="scene" embedded gesture-detector>
         <a-assets>
-            <video id="vid" src="assets/asset.mp4" preload="auto" response-type="arraybuffer" loop crossorigin
+            <video id="vid" src="assets/asset.mp4" preload="auto" response-type="arraybuffer" crossorigin
                 webkit-playsinline playsinline></video>
         </a-assets>
 
