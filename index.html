@@ -16,23 +16,20 @@
                 var marker = this.el;
                 this.vid = document.querySelector("#vid");
 
-                // $('#a_video').click(function () {
-                //     window.location.href = 'https://www.google.com'
-                // });
-
                 window.addEventListener('click', function () {
                     document.querySelector('#vid').play();
+                    $('#a_video').addEventListener('click', function () {
+                        window.location.href = 'https://www.google.com'
+                    });
                 });
 
-                // marker.addEventListener('markerFound', function () {
-                //     this.toggle = true;
-                //     this.vid.play();
-                // }.bind(this));
-
-                // marker.addEventListener('markerLost', function () {
-                //     this.toggle = false;
-                //     this.vid.pause();
-                // }.bind(this));
+                marker.addEventListener('markerLost', function () {
+                    this.toggle = false;
+                    this.vid.pause();
+                    $('#a_video').removeEventListener('click', function () {
+                        window.location.href = 'https://www.google.com'
+                    });
+                }.bind(this));
 
             },
         });
