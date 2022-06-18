@@ -18,7 +18,7 @@
 
                 window.addEventListener('click', function () {
                     document.querySelector('#vid').play();
-                    $('#a_video').addEventListener('click', function () {
+                    window.addEventListener('click', function () {
                         window.location.href = 'https://www.google.com'
                     });
                 });
@@ -26,7 +26,7 @@
                 marker.addEventListener('markerLost', function () {
                     this.toggle = false;
                     this.vid.pause();
-                    $('#a_video').removeEventListener('click', function () {
+                    window.removeEventListener('click', function () {
                         window.location.href = 'https://www.google.com'
                     });
                 }.bind(this));
